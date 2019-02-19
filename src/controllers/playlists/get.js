@@ -1,8 +1,9 @@
-const get = ({ Video }, { config }) => async (req, res, next) => {
+const get = ({ Playlist }, { config }) => async (req, res, next) => {
   const { _id } = req.params;
   try {
-    const video = await Video.findOne({ _id });
-    res.status(200).send({ video });
+    const playlist = await Playlist.findOne({ _id });
+    if(playlist) res.status(200).send({ playlist });
+    else res.status(200).send({ message: 'Not found' });
   } catch (error) {
     next(error);
   }

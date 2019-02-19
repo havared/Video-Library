@@ -9,7 +9,7 @@ const create = ({ Playlist, Video }, { config }) => async (req, res, next) => {
       throw new NotAcceptable(405, 'Name, website url, videos should be provided');
     }
     // to check if videos exists
-    const video_list = await Video.find({_id: { $in: [req.body.videos]}})
+    const video_list = await Video.find({_id: { $in: req.body.videos}})
     if(video_list.length > 0){
       let video_ids = [];
       video_list.map((each_video, key) => {
@@ -17,7 +17,7 @@ const create = ({ Playlist, Video }, { config }) => async (req, res, next) => {
       })
       _.extend(playlist, req.body, {videos: video_ids});
       await playlist.save();
-      return sendOne(res, { video });
+      return sendOne(res, { playlist });
     }else{
       throw new NotAcceptable(405, 'Not valid video list');
     }
