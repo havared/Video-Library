@@ -1,3 +1,3 @@
 const { sendOne } = require('./requests-helpers');
-
-module.exports = { sendOne };
+const { errorHandler } = require('./error-handler');
+module.exports = { sendOne, errorHandler };
