@@ -3,7 +3,9 @@ const express = require('express');
 const path = require('path');
 const cookieParser = require('cookie-parser');
 const config = require('./config');
+
 const { MongoManager } = require('./src/mongo');
+const mongoManager = new MongoManager(config);
 
 const api = require('./src/api');
 const app = express();
