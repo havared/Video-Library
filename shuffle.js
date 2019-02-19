@@ -6,10 +6,10 @@
 */
 
 const shuffle_video_array = (videos) => {
-  for(var video_index = videos.length - 1; video_index >=0 ; video_index --){
-    var generated_random_index = Math.floor(Math.random()*(video_index+1));
+  for(let video_index = videos.length - 1; video_index >=0 ; video_index --){
+    let generated_random_index = Math.floor(Math.random()*(video_index+1));
     //swap
-    var video_at_random_index = videos[generated_random_index];
+    let video_at_random_index = videos[generated_random_index];
     videos[generated_random_index] = videos[video_index];
     videos[video_index] = video_at_random_index;
   }
